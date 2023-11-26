@@ -1,0 +1,23 @@
+name: Auto Push
+
+on:
+  # Trigger the workflow on push but only for the specific branch
+  push:
+    branches:
+      - your-branch-name # Replace with your branch name
+
+jobs:
+  auto-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+
+    - name: Auto Push
+      run: |
+        git config --global user.email "you@example.com" # Replace with your email
+        git config --global user.name "Your Name" # Replace with your name
+        git add .
+        git commit -m "Automated commit" --allow-empty
+        git push
